@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route, Link, NavLink, useLocation} from 'react-router-dom';
 import Home from './pages/Home';
 import BookList from './pages/BookList';
 import Book from './pages/Book';
@@ -10,6 +10,7 @@ import BookLayout from './BookLayout';
 import {BookRoutes} from "./BookRoutes.jsx";
 
 function App() {
+    const location = useLocation()
   return (
     <>
       {/*<Routes location={"/books"}>*/}
@@ -18,21 +19,17 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/books" >Books</Link>
+            <NavLink to="/books" >Books</NavLink>
           </li>
         </ul>
       </nav>
+        {location.state}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/books/*" element={<BookRoutes/>} />
-        {/*<Route path="/books" element={<BookLayout/>}>*/}
-        {/*  <Route index element={<BookList />} />*/}
-        {/*  <Route path=":id" element={<Book />} />*/}
-        {/*  <Route path="new" element={<NewBook />} />*/}
-        {/*</Route>*/}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
