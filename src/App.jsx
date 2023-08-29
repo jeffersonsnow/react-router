@@ -7,12 +7,14 @@ import NewBook from './pages/NewBook';
 import NotFound from './pages/NotFound';
 import './App.css'
 import BookLayout from './BookLayout';
+import {BookRoutes} from "./BookRoutes.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+      {/*<Routes location={"/books"}>*/}
+      {/*  <Route path="/books" element={<h1>extra content</h1>} />*/}
+      {/*</Routes>*/}
       <nav>
         <ul>
           <li>
@@ -25,14 +27,12 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/books" element={<BookList />} />
-        <Route path="/books/:id" element={<Book />} />
-        <Route path="/books/new" element={<NewBook />} /> */}
-        <Route path="/books" element={<BookLayout/>}>
-          <Route index element={<BookList />} /> 
-          <Route path=":id" element={<Book />} /> 
-          <Route path="new" element={<NewBook />} /> 
-        </Route>
+        <Route path="/books/*" element={<BookRoutes/>} />
+        {/*<Route path="/books" element={<BookLayout/>}>*/}
+        {/*  <Route index element={<BookList />} />*/}
+        {/*  <Route path=":id" element={<Book />} />*/}
+        {/*  <Route path="new" element={<NewBook />} />*/}
+        {/*</Route>*/}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

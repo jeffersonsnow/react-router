@@ -7,6 +7,7 @@ const Book = () => {
     return (
         <div>
             Book {id}{obj.hello}
+            {/*Book {id}*/}
         </div>
     );
 }
